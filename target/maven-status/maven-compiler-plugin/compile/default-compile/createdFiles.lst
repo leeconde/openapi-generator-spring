@@ -1,0 +1,7 @@
+com\br\ednocel\spring_openapi_generator\rest\ClienteApiDelegateImpl.class
+com\br\ednocel\spring_openapi_generator\model\ClienteRequest.class
+com\br\ednocel\spring_openapi_generator\api\ApiUtil.class
+com\br\ednocel\spring_openapi_generator\model\ClienteResponse.class
+com\br\ednocel\spring_openapi_generator\api\V1Api.class
+com\br\ednocel\spring_openapi_generator\GeradorDeId.class
+com\br\ednocel\spring_openapi_generator\SpringOpenapiGeneratorApplication.class

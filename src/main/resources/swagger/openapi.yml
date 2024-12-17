@@ -1,0 +1,152 @@
+openapi: 3.0.3
+info:
+  title: Serviço de cliente
+  description: |-
+    Serviço referente ao cadastro e busca de clientes no sistema.
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: email@email.com
+  version: 1.0.11
+servers:
+  - url: http://localhost:8080
+tags:
+  - name: Cliente
+    description: Serviço de cliente
+paths:
+  /v1/cliente:
+    post:
+      tags:
+        - Cliente
+      summary: Criar novo cliente no sistema
+      description: Serviço para criar um novo cliente no sistema
+      operationId: saveCliente
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClienteRequest'
+        required: true
+      responses:
+        '200':
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClienteResponse'
+        '400':
+          description: Bad Request
+    get:
+      tags:
+        - Cliente
+      summary: Buscar todos os clientes no sistema
+      description: Serviço para buscar a lista de todos os clientes cadastrados no sistema
+      operationId: getAllClientes
+      responses:
+        '200':
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClienteResponse'
+        '400':
+          description: Bad Request
+  /v1/cliente/{id}:
+    get:
+      tags:
+        - Cliente
+      summary: Buscar cliente pelo ID
+      description: Retorna um único registro de cliente pelo ID
+      operationId: getByIdCliente
+      parameters:
+        - name: id
+          in: path
+          description: ID do cliente a ser buscado
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClienteResponse'
+        '400':
+          description: Bad Request
+        '404':
+          description: Cliente não encontrado
+    delete:
+      tags:
+        - Cliente
+      summary: Deletar cliente pelo ID
+      description: Remove um único registro de cliente pelo ID
+      operationId: delete
+      parameters:
+        - name: id
+          in: path
+          description: ID do cliente a ser removido
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Cliente removido com sucesso
+        '400':
+          description: Bad Request
+        '404':
+          description: Cliente não encontrado
+    put:
+      tags:
+        - Cliente
+      summary: Atualizar cliente pelo ID
+      description: Atualizar um único registro de cliente pelo ID
+      operationId: put
+      parameters:
+        - name: id
+          in: path
+          description: ID do cliente a ser atualizado
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClienteRequest'
+        required: true
+      responses:
+        '200':
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClienteResponse'
+        '400':
+          description: Bad Request
+        '404':
+          description: Cliente não encontrado
+components:
+  schemas:
+    ClienteRequest:
+      type: object
+      properties:
+        nome:
+          type: string
+          example: Leticia Conde
+        email:
+          type: string
+          example: email@email.com
+    ClienteResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 51
+        nome:
+          type: string
+          example: Leticia Conde
+        email:
+          type: string
+          example: email@email.com

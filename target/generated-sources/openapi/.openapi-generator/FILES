@@ -1,0 +1,4 @@
+src/main/java/com/br/ednocel/spring_openapi_generator/api/ApiUtil.java
+src/main/java/com/br/ednocel/spring_openapi_generator/api/V1Api.java
+src/main/java/com/br/ednocel/spring_openapi_generator/model/ClienteRequest.java
+src/main/java/com/br/ednocel/spring_openapi_generator/model/ClienteResponse.java
